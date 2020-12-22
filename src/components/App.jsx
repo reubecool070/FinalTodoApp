@@ -7,6 +7,19 @@ import CreateArea from "./CreateArea";
 function App() {
   const [lists, setLists] = useState([]);
 
+  const sorting = () => {
+    const a = lists.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+    setLists(a);
+  };
+
   function listDeleted(id) {
     setLists(function (prevLists) {
       return prevLists.filter(function (listItem, index) {
@@ -27,6 +40,7 @@ function App() {
       {lists.map(function (listItem, index) {
         return (
           <List
+            onChange={sorting}
             key={index}
             id={index}
             onDelete={listDeleted}

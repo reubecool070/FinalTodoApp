@@ -18,6 +18,10 @@ function CreateArea(props) {
   }
   function submitList(event) {
     props.onAdd(list);
+    setTimes({
+      times: "",
+      todolist: ""
+    });
     event.preventDefault();
   }
 
